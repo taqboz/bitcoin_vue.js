@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<html lang="ja">
+	<head>
+		<!-- meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>ToDoApp（Vue.js）</title>
+		<meta name="description" content="Vue.js勉強用ToDoアプリ">
+		<meta name="keywords" content="">
+		
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<!-- stylesheet -->
+		<link rel="stylesheet" href="style.css" media="all">
+	</head>
+	
+	<body>
+		<div id="app">
+			<h2>
+			Bitcoin Price
+			</h2>
+			<!-- エラーがある場合 -->
+			<section v-if="hasError">
+				Error.
+			</section>
+			
+			<!-- エラーがない場合 -->
+			<section v-else>
+				<div v-if="loading">
+				Loading now ...
+				</div>
+				<ul v-cloak>
+					<!-- rateは価格、currencyは通貨 -->
+					<li v-for="(rate, currency) in bpi">
+						{{ currency }} ： {{rate.rate_float | currencyDecimal}}
+					</li>
+				</ul>
+			</section>
+		</div>
+			
+		<!-- vue.js-->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+		<!-- axios -->
+		<script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+		
+		<!-- 自前jsを読み込む場合はここに記述 -->
+		<!-- javascript（todo_app） -->
+		<script src="script.js"></script>
+	</body>
+	
+</html>
